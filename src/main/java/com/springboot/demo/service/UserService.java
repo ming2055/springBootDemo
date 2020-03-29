@@ -1,19 +1,14 @@
 package com.springboot.demo.service;
 
-import com.springboot.demo.pojo.UserForScanLoad;
-import org.springframework.stereotype.Service;
+import com.springboot.demo.pojo.User;
 
 /**
  * @Author Wu Ming
- * @Date 2020/3/28 12:39
+ * @Date 2020/3/29 21:36
  * @Version 1.0
+ *
+ * AOP
  */
-
-@Service
-public class UserService {
-    public void printUser(UserForScanLoad user) {
-        System.out.println("编号:" + user.getId());
-        System.out.println("用户名称:" + user.getUserName());
-        System.out.println("备注:" + user.getNote());
-    }
+public interface UserService {
+    public void printUser(User user);
 }
