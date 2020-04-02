@@ -4,6 +4,12 @@ import com.springboot.demo.aspect.impl.MyAspect;
 import com.springboot.demo.aspect.impl.MyAspect1;
 import com.springboot.demo.aspect.impl.MyAspect2;
 import com.springboot.demo.aspect.impl.MyAspect3;
+import com.springboot.demo.dao.MyBatisUserDao;
+import com.springboot.demo.enumeration.SexEnum;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.type.TypeHandler;
+import org.mybatis.spring.mapper.MapperFactoryBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -16,7 +22,7 @@ import org.springframework.context.annotation.PropertySource;
 @SpringBootApplication
 //@ComponentScan(basePackages="com.springboot.demo",
 //        excludeFilters = {@ComponentScan.Filter(type =FilterType.ANNOTATION, classes = {Service.class})})
-@PropertySource(value = {"classpath:jdbc.properties"}, ignoreResourceNotFound = true)
+//@PropertySource(value = {"classpath:jdbc.properties"}, ignoreResourceNotFound = true)
 public class SpringBootDemoApplication {
     // 定义切面
     @Bean(name = "myAspect")
@@ -41,6 +47,18 @@ public class SpringBootDemoApplication {
     public MyAspect3 initMyAspect3() {
         return new MyAspect3();
     }
+
+    @Autowired
+    SqlSessionFactory sqlSessionFactory = null;
+    // 定义一个MyBatis的Mapper接口
+	@Bean
+	public MapperFactoryBean<MyBatisUserDao> initMyBatisUserDao() {
+	     MapperFactoryBean<MyBatisUserDao> bean = new MapperFactoryBean<>();
+	     bean.setMapperInterface(MyBatisUserDao.class);
+	     bean.setSqlSessionFactory(sqlSessionFactory);
+	     TypeHandler<SexEnum> sexTypeHandler = sqlSessionFactory.getConfiguration().getTypeHandlerRegistry().getTypeHandler(SexEnum.class);
+	     return bean;
+	}
 
     public static void main(String[] args) {
         SpringApplication.run(SpringBootDemoApplication.class, args);

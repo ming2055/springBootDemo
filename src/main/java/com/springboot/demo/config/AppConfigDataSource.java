@@ -15,7 +15,7 @@ import java.util.Properties;
 
 @Configuration
 public class AppConfigDataSource {
-    @Bean(name = "dataSource")
+//    @Bean(name = "dataSource")
     public DataSource getDataSource() {
         Properties props = new Properties();
         props.setProperty("driver", "com.mysql.jdbc.Driver");

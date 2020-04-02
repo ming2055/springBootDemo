@@ -20,8 +20,8 @@ import java.util.Properties;
 
 @Configuration
 public class AppConfigProfile {
-    @Bean(name = "dataSourceProfile", destroyMethod = "close")
-    @Profile("prod")
+//    @Bean(name = "dataSourceProfile", destroyMethod = "close")
+//    @Profile("prod")
     public DataSource getProdDataSource(
             @Value("${database.driverName}") String driver,
             @Value("${database.url}") String url,
@@ -43,8 +43,8 @@ public class AppConfigProfile {
     }
 
 
-    @Bean(name = "dataSourceProfile", destroyMethod = "close")
-    @Profile("test")
+//    @Bean(name = "dataSourceProfile", destroyMethod = "close")
+//    @Profile("test")
     public DataSource getTestDataSource(
             @Value("${database.driverName}") String driver,
             @Value("${database.url}") String url,

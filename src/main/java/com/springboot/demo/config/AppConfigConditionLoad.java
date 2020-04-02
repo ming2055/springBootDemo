@@ -19,8 +19,8 @@ import java.util.Properties;
 
 @Configuration
 public class AppConfigConditionLoad {
-    @Bean(name = "dataSourceConditional", destroyMethod = "close")
-    @Conditional(DatabaseConditional.class)
+//    @Bean(name = "dataSourceConditional", destroyMethod = "close")
+//    @Conditional(DatabaseConditional.class)
     public DataSource getDataSource(
             @Value("${database.driverName}") String driver,
             @Value("${database.url}") String url,
