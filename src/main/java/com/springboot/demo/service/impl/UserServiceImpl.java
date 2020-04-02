@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService{
     @Override
     public void printUser(User user) {
         if (user.getId() == null) {
@@ -22,5 +22,10 @@ public class UserServiceImpl implements UserService {
         System.out.print("id =" + user.getId());
         System.out.print("\tusername =" + user.getUserName());
         System.out.println("\tnote =" + user.getNote());
+    }
+
+    @Override
+    public void manyAspects() {
+        System.out.println("测试多个切面顺序");
     }
 }

@@ -1,14 +1,14 @@
 package com.springboot.demo;
 
-import com.springboot.demo.aspect.MyAspect;
+import com.springboot.demo.aspect.impl.MyAspect;
+import com.springboot.demo.aspect.impl.MyAspect1;
+import com.springboot.demo.aspect.impl.MyAspect2;
+import com.springboot.demo.aspect.impl.MyAspect3;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.FilterType;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.stereotype.Service;
 
 //SpringBootApplication相当于@configuration+@EnableAutoConfiguration+@CompoentScan
 //提供的exclude和excludeName两个方法是对于其内部的自动配置类才会生效的。
@@ -22,6 +22,24 @@ public class SpringBootDemoApplication {
     @Bean(name = "myAspect")
     public MyAspect initMyAspect() {
         return new MyAspect();
+    }
+
+    // 定义切面
+    @Bean(name = "myAspect2")
+    public MyAspect2 initMyAspect2() {
+        return new MyAspect2();
+    }
+
+    // 定义切面
+    @Bean(name = "myAspect1")
+    public MyAspect1 initMyAspect1() {
+        return new MyAspect1();
+    }
+
+    // 定义切面
+    @Bean(name = "myAspect3")
+    public MyAspect3 initMyAspect3() {
+        return new MyAspect3();
     }
 
     public static void main(String[] args) {

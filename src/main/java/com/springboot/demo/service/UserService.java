@@ -11,4 +11,6 @@ import com.springboot.demo.pojo.User;
  */
 public interface UserService {
     public void printUser(User user);
+
+    public void manyAspects();
 }
