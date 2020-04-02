@@ -13,7 +13,7 @@ import javax.persistence.*;
  * @Date 2020/3/28 10:36
  * @Version 1.0
  */
-
+//需要引入maven jpa
 // 标明是一个实体类
 @Entity(name = "user")
 // 定义映射的表
